@@ -58,12 +58,7 @@
                 columns: [
                     { title:'#',data: 'id', name: 'id', className: 'text-center' },
                     { title:'TITLE',data: 'title', name: 'title', className: 'text-center' },
-                    {
-                        title: '-',data:'id',name:'id',
-                        render: (data,type,row){
-                            return "asadas"
-                        }
-                    }
+                    { title:'SCHOOL',data: 'school.title', name: 'school.title', className: 'text-center' },
                 ],
                 dom: "<'row mb-3'<'col-sm-12 col-md-6 d-flex align-items-center justify-content-start'f><'col-sm-12 col-md-6 d-flex align-items-center justify-content-end'l>><'row'<'col-sm-12'tr>><'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>><'disabled-none'B>",
                 buttons: [

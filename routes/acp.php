@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\acp\AcpController;
+use App\Http\Controllers\acp\LectureController;
 use App\Http\Controllers\acp\SchoolController;
 use Illuminate\Support\Facades\Route;
 
@@ -22,6 +23,17 @@ Route::group(['prefix' => 'school', 'as' => 'school.'], function(){
     Route::get('/create', [SchoolController::class, 'create'])->name('create');
     Route::get('/edit', [SchoolController::class, 'edit'])->name('edit');
     Route::get('/delete', [SchoolController::class, 'delete'])->name('delete');
+});
+
+Route::group(['prefix' => 'lecture', 'as' => 'lecture.'], function(){
+    Route::get('/', [LectureController::class, 'index'])->name('index');
+    Route::get('/create', [LectureController::class, 'create'])->name('create');
+    Route::get('/edit', [LectureController::class, 'edit'])->name('edit');
+    Route::get('/delete', [LectureController::class, 'delete'])->name('delete');
+
+    Route::group(['prefix' => 'plan/{lecture:id}'], function(){
+        Route::get('/', [LectureController::class, 'planIndex'])->name('plan.index');
+    });
 });
 
 
