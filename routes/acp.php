@@ -31,8 +31,10 @@ Route::group(['prefix' => 'lecture', 'as' => 'lecture.'], function(){
     Route::get('/edit', [LectureController::class, 'edit'])->name('edit');
     Route::get('/delete', [LectureController::class, 'delete'])->name('delete');
 
-    Route::group(['prefix' => 'plan/{lecture:id}'], function(){
+    Route::group(['prefix' => '{lecture:id}/plan'], function(){
         Route::get('/', [LectureController::class, 'planIndex'])->name('plan.index');
+        Route::get('/form/{plan:id?}', [LectureController::class, 'planForm'])->name('plan.form');
+        Route::post('/save/{plan:id?}', [LectureController::class, 'planSave'])->name('plan.save');
     });
 });
 

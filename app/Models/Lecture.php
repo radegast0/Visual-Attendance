@@ -23,4 +23,8 @@ class Lecture extends BaseModel
     public function users(){
         return $this->belongsToMany(User::class, "lecture_user", "lecture_id", "user_id")->withPivot("role_id");
     }
+
+    public function plans(){
+        return $this->hasMany(LecturePlan::class, "lecture_id", "id");
+    }
 }
