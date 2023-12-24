@@ -3,6 +3,6 @@ import { ParseVideo } from "../Controllers/StudentController";
 
 const router = Router();
 
-router.get("/student/:studentId/parse-video", ParseVideo);
+router.get("/student/:id/parse-video", ParseVideo);
 
 export default router;
