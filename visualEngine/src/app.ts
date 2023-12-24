@@ -1,9 +1,16 @@
+import { config } from "./Config";
 import router from "./Routes";
 import server from "./Server";
-import { config } from "./Config";
+import db from "./db";
+
+db.$connect().then(() => {
+	console.log("Database connected");
+});
 
 server.use("/", router);
 
 server.listen(config.port, () => {
-	console.log(`Server is running ${config.env} on ${config.host}:${config.port}`);
+	console.log(
+		`Server is running ${config.env} on ${config.host}:${config.port}`,
+	);
 });

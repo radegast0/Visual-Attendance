@@ -11,16 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('schools', function (Blueprint $table) {
+        Schema::create('videos', function (Blueprint $table) {
             $table->id();
-
-            $table->string("title");
-
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->string('title');
+            $table->longText('path');
+            $table->enum('status', ['pending', 'processing','done','failed'])->default('pending');
             $table->timestamps();
-        });
 
-        Schema::table('users', function (Blueprint $table) {
-            $table->foreign('school_id')->references('id')->on('schools')->nullOnDelete();
+            $table->foreign('user_id')->references('id')->on('users')->nullOnDelete();
         });
     }
 
@@ -29,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('schools');
+        Schema::dropIfExists('Videos');
     }
 };

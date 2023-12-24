@@ -13,14 +13,14 @@ return new class extends Migration
     {
         Schema::create('roles', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 255)->nullable();
+            $table->string('title', 255)->nullable();
             $table->string('slug', 255)->nullable();
             $table->json('permissions')->nullable();
             $table->timestamps();
         });
 
         Schema::table('users', function (Blueprint $table) {
-            $table->foreignId('role_id')->nullable()->default(3)->after('id')->constrained('roles')->onDelete('cascade');
+            $table->foreign('role_id')->references('id')->on('roles')->nullOnDelete();
         });
     }
 

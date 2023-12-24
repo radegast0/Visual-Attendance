@@ -6,7 +6,7 @@ dotenv.config({
 });
 
 export const config = {
-    env: process.env.NODE_ENV || "dev",
+	env: process.env.NODE_ENV || "dev",
 	port: process.env.PORT || 5000,
 	host: process.env.HOST || "http://127.0.0.1",
 	video_folder: process.env.VIDEO_FOLDER || "videos",
